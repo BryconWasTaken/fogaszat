@@ -20,7 +20,7 @@ return new class extends Migration
             DECLARE start_time datetime;
             DECLARE end_time datetime;
 
-            SET treatment_time =( SELECT treatment_length FROM treatment WHERE treatment.id = NEW.suggested_treatment);
+            SET treatment_time =( SELECT treatment_length FROM treatment WHERE treatment.id = NEW.treatment_id);
             SET start_time = NEW.visit_date;
             SET end_time = DATE_ADD(start_time, INTERVAL TIME_TO_SEC(treatment_time) SECOND);
 
